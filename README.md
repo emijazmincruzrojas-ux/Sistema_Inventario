@@ -27,6 +27,97 @@ La plataforma integra:
 - Bitácora Avanzada de Auditorías con Registro de Eventos
 - Sistema de Control de Acceso y Sesión de Usuarios
 - Sincronización Local Multipantalla (Laptop y Dispositivos Móviles)
+# 📸 Documentación Visual del Sistema
+
+# 🛒 Módulo Comercial — Vista Cliente e Inventario
+
+---
+
+## 1️⃣ Sistema de Control de Acceso Operativo (Autenticación)
+
+Interfaz de seguridad perimetral para la validación de credenciales operativas del administrador y usuarios estándar. Controla el acceso directo al ecosistema del ERP protegiendo las rutas privadas mediante el puerto del servidor.
+
+<p align="center">
+  <img src="frontend/public/evidencias/emi.png" width="900">
+</p>
+
+---
+
+## 2️⃣ Catálogo General de Productos
+
+El sistema renderiza dinámicamente las tarjetas de los productos registrados en la base de datos MariaDB mostrando la disponibilidad de artículos, códigos de identificación, precios y stock en tiempo real.
+
+<p align="center">
+  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-46-39.png" width="900">
+</p>
+
+---
+
+## 3️⃣ Interfaz de Gestión y Navegación de Mercancías
+
+Menú interactivo del catálogo operativo adaptado para buscar, verificar, filtrar y seleccionar las diferentes filas del almacén de datos antes de realizar modificaciones.
+
+<p align="center">
+  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-46-34%20(Copiar).png" width="900">
+</p>
+
+---
+
+## 4️⃣ Módulo de Caja y Procesamiento Transaccional
+
+Punto de venta y caja dinámica estructurada para procesar el flujo asíncrono de bajas, cálculos financieros instantáneos y la adición automatizada de productos seleccionados al carrito.
+
+<p align="center">
+  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-46-08.png" width="900">
+</p>
+
+---
+
+# 📦 Panel Administrativo (ERP Dashboard)
+
+---
+
+## 5️⃣ Dashboard Financiero y Analítica Comercial
+
+El panel analítico principal consolida la salud operativa del negocio, presentando estadísticas e indicadores KPI automatizados como el valor total de la inversión del almacén y alertas de stock crítico.
+
+<p align="center">
+  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-46-21.png" width="900">
+</p>
+
+---
+
+## 6️⃣ Control Centralizado de Altas e Inserción de Productos
+
+Formularios dinámicos validados que se conectan directamente al backend para registrar nuevas mercancías asignándoles stock inicial, nombres de identificación, costos y categorías lógicas.
+
+<p align="center">
+  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-47-24.png" width="900">
+</p>
+
+---
+
+## 7️⃣ Ventanas Emergentes de Actualización Segmentada de Stock
+
+Modales interactivos integrados dentro de la interfaz administrativa diseñados para la reconfiguración veloz, edición de atributos específicos o el reabastecimiento unitario de existencias.
+
+<p align="center">
+  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-47-24%20(Copiar).png" width="900">
+</p>
+
+---
+
+# 🔐 Seguridad y Auditoría
+
+---
+
+## 8️⃣ Bitácora de Sesiones y Auditoría Forense del Sistema
+
+Módulo de seguridad avanzado que audita de forma interna e inalterable cada acción del sistema (`CREAR`, `EDITAR`, `ELIMINAR`), registrando el operador encargado, la fecha exacta y la IP del dispositivo cliente.
+
+<p align="center">
+  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-47-16.png" width="900">
+</p>
 
 ---
 
