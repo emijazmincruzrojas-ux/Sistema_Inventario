@@ -1,169 +1,95 @@
-# ⚡ InventarioPro Platform
+# ⚡ InventarioPro
 
 <p align="center">
-  <img src="frontend/src/assets/evidencias/emi2.png" width="100%">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react">
-  <img src="https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js">
-  <img src="https://img.shields.io/badge/MariaDB-Database-003545?style=for-the-badge&logo=mariadb">
-  <img src="https://img.shields.io/badge/CSS3-UI-1572B6?style=for-the-badge&logo=css3">
-  <img src="https://img.shields.io/badge/Express.js-API-black?style=for-the-badge&logo=express">
+  <img src="frontend/public/evidencias/dashboard.png" width="100%">
 </p>
 
 ---
 
-# 📖 Descripción General
+## 📖 Descripción General
+**InventarioPro** es una plataforma de gestión empresarial desarrollada para optimizar el control de existencias, automatizar el punto de venta y centralizar la toma de decisiones financieras. A diferencia de soluciones básicas, este sistema garantiza **integridad transaccional** gracias al uso del motor InnoDB en MariaDB, permitiendo que cada movimiento de inventario esté perfectamente respaldado por auditorías en tiempo real.
 
-InventarioPro es una solución de software empresarial Full-Stack diseñada para la gestión centralizada de almacenes, el control operativo de stock en tiempo real y el análisis de transacciones comerciales mediante un ecosistema informático unificado.
-
-El sistema implementa una arquitectura desacoplada basada en una API RESTful y persistencia de datos relacional sobre MariaDB, lo que garantiza la integridad referencial y auditorías operativas automatizadas del negocio.
-
-La plataforma integra:
-- Panel Administrativo de Control (Dashboard General)
-- Gestión de Catálogo de Productos (CRUD Completo)
-- Módulo de Caja Dinámica (Carrito de Compras y Ventas)
-- Bitácora Avanzada de Auditorías con Registro de Eventos
-- Sistema de Control de Acceso y Sesión de Usuarios
-- Sincronización Local Multipantalla (Laptop y Dispositivos Móviles)
-# 📸 Documentación Visual del Sistema
-
-# 🛒 Módulo Comercial — Vista Cliente e Inventario
+El proyecto se basa en una arquitectura **Cliente-Servidor desacoplada**, donde el frontend consume una API REST centralizada, permitiendo que múltiples dispositivos en una red local (LAN) accedan a la misma base de datos sin conflictos de concurrencia.
 
 ---
 
-## 1️⃣ Sistema de Control de Acceso Operativo (Autenticación)
+## 🛠️ Especificaciones Técnicas y Lógica
 
-Interfaz de seguridad perimetral para la validación de credenciales operativas del administrador y usuarios estándar. Controla el acceso directo al ecosistema del ERP protegiendo las rutas privadas mediante el puerto del servidor.
+### 🖥️ Frontend (SPA - Single Page Application)
+- **React.js & Hooks:** Utilizamos `useState` y `useEffect` para mantener la interfaz sincronizada con el servidor sin recargas de página.
+- **Comunicación Asíncrona:** La integración de `Fetch API` permite consultar el stock, enviar transacciones de venta y actualizar registros de forma inmediata.
+- **Diseño Adaptativo:** Implementación de un sistema de estilos CSS3 orientado a la legibilidad en entornos de almacén, priorizando el contraste y la organización visual de datos.
 
+### ⚙️ Backend (API REST)
+- **Node.js & Express:** Servidor de alto rendimiento que gestiona las peticiones mediante rutas (endpoints) protegidas.
+- **Seguridad perimetral:** Implementación de políticas **CORS** para asegurar el intercambio de datos entre el cliente y el servidor.
+- **Gestión de Recursos:** El backend actúa como un orquestador que valida el stock antes de confirmar cualquier venta, evitando ventas en negativo.
+
+### 🗄️ Base de Datos: La columna vertebral
+El sistema utiliza **MariaDB** bajo un modelo relacional estricto. La lógica se sustenta en:
+1. **Transacciones:** Si una venta falla, el inventario nunca se descuenta (integridad garantizada).
+2. **Consultas Agregadas:** En lugar de procesar cálculos en el frontend, el backend solicita a la base de datos valores calculados (`SUM`, `COUNT`), lo que reduce drásticamente el consumo de memoria.
+
+---
+
+## 📸 Documentación Visual del Sistema
+
+### 1. Sistema de Control de Acceso (Login)
+*La puerta de entrada al sistema.* Gestiona el nivel de privilegios y asegura que solo personal autorizado pueda realizar operaciones de inventario o visualizar reportes financieros.
+<p align="center">
+  <img src="frontend/public/evidencias/login.png" width="900">
+</p>
+
+### 2. Catálogo e Interfaz de Bienvenida
+*Visualización de activos.* Aquí se despliegan los productos disponibles con su respectiva información de stock. La interfaz está diseñada para un escaneo visual rápido.
 <p align="center">
   <img src="frontend/public/evidencias/emi.png" width="900">
 </p>
 
----
-
-## 2️⃣ Catálogo General de Productos
-
-El sistema renderiza dinámicamente las tarjetas de los productos registrados en la base de datos MariaDB mostrando la disponibilidad de artículos, códigos de identificación, precios y stock en tiempo real.
-
+### 3. Módulo de Caja y Transacciones (Compra)
+*El núcleo operativo.* Al realizar una venta, el sistema realiza una consulta atómica que verifica la disponibilidad del producto y descuenta el stock de manera instantánea.
 <p align="center">
-  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-46-39.png" width="900">
+  <img src="frontend/public/evidencias/compra.png" width="900">
+</p>
+
+### 4. Historial Operativo de Pedidos
+*Trazabilidad.* Permite auditar qué se vendió, cuándo y por qué operador, proporcionando un historial claro de todas las salidas de almacén.
+<p align="center">
+  <img src="frontend/public/evidencias/pedidos.png" width="900">
+</p>
+
+### 5. Dashboard Financiero y Analítica
+*Inteligencia de negocios.* Aquí se traduce la data cruda en información útil: ¿Qué productos se venden más? ¿Cuál es el valor total del inventario? ¿Cuáles son los artículos con stock crítico?
+<p align="center">
+  <img src="frontend/public/evidencias/dashboard.png" width="900">
+</p>
+
+### 6. Control Centralizado de Inventario (CRUD)
+*Administración maestra.* Permite al administrador realizar altas, bajas y modificaciones en la base de datos de productos de forma segura y validada.
+<p align="center">
+  <img src="frontend/public/evidencias/adminventas.png" width="900">
+</p>
+
+### 7. Bitácora de Auditoría Forense
+*Transparencia absoluta.* Cada cambio realizado en la base de datos queda registrado. Esta bitácora es esencial para detectar errores humanos o intentos de manipulación de registros.
+<p align="center">
+  <img src="frontend/public/evidencias/auditoria.png" width="900">
 </p>
 
 ---
 
-## 3️⃣ Interfaz de Gestión y Navegación de Mercancías
+## 🚀 Despliegue y Ejecución
 
-Menú interactivo del catálogo operativo adaptado para buscar, verificar, filtrar y seleccionar las diferentes filas del almacén de datos antes de realizar modificaciones.
+Para poner en marcha el sistema, asegúrate de tener instalado **Node.js (LTS)** y **MariaDB**.
 
-<p align="center">
-  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-46-34%20(Copiar).png" width="900">
-</p>
+**1. Configuración de Base de Datos:**
+Importa el archivo `.sql` en MariaDB. Esto creará las tablas necesarias con todas las relaciones y restricciones configuradas.
 
----
-
-## 4️⃣ Módulo de Caja y Procesamiento Transaccional
-
-Punto de venta y caja dinámica estructurada para procesar el flujo asíncrono de bajas, cálculos financieros instantáneos y la adición automatizada de productos seleccionados al carrito.
-
-<p align="center">
-  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-46-08.png" width="900">
-</p>
+**2. Ejecución:**
+- **Backend:** `cd backend` -> `npm install` -> `npm start`
+- **Frontend:** `cd frontend` -> `npm install` -> `npm start`
 
 ---
 
-# 📦 Panel Administrativo (ERP Dashboard)
-
----
-
-## 5️⃣ Dashboard Financiero y Analítica Comercial
-
-El panel analítico principal consolida la salud operativa del negocio, presentando estadísticas e indicadores KPI automatizados como el valor total de la inversión del almacén y alertas de stock crítico.
-
-<p align="center">
-  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-46-21.png" width="900">
-</p>
-
----
-
-## 6️⃣ Control Centralizado de Altas e Inserción de Productos
-
-Formularios dinámicos validados que se conectan directamente al backend para registrar nuevas mercancías asignándoles stock inicial, nombres de identificación, costos y categorías lógicas.
-
-<p align="center">
-  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-47-24.png" width="900">
-</p>
-
----
-
-## 7️⃣ Ventanas Emergentes de Actualización Segmentada de Stock
-
-Modales interactivos integrados dentro de la interfaz administrativa diseñados para la reconfiguración veloz, edición de atributos específicos o el reabastecimiento unitario de existencias.
-
-<p align="center">
-  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-47-24%20(Copiar).png" width="900">
-</p>
-
----
-
-# 🔐 Seguridad y Auditoría
-
----
-
-## 8️⃣ Bitácora de Sesiones y Auditoría Forense del Sistema
-
-Módulo de seguridad avanzado que audita de forma interna e inalterable cada acción del sistema (`CREAR`, `EDITAR`, `ELIMINAR`), registrando el operador encargado, la fecha exacta y la IP del dispositivo cliente.
-
-<p align="center">
-  <img src="frontend/public/evidencias/Captura%20desde%202026-05-20%2010-47-16.png" width="900">
-</p>
-
----
-
-# 🛠️ Especificación Técnica del Stack
-
-## 🖥️ Frontend (SPA)
-- **React.js** → Arquitectura basada en componentes reutilizables y manejo de estados dinámicos.
-- **React Scripts** → Entorno de compilación y empaquetado optimizado para el servidor cliente.
-- **CSS3 Personalizado** → Interfaz responsiva con temática oscura (*Dark Mode*) estilizada para entornos de administración y ERP.
-- **Fetch API** → Consumo asíncrono de los endpoints expuestos por la API REST del backend.
-
-## ⚙️ Backend (REST API)
-- **Node.js** → Entorno de ejecución asíncrono de JavaScript en el servidor.
-- **Express.js** → Framework modular para el enrutamiento y gestión de peticiones HTTP.
-- **Cors** → Mecanismo de seguridad perimetral para habilitar el intercambio de recursos de origen cruzado.
-- **Express Static Middleware** → Despliegue y entrega de recursos físicos y assets multimedia desde el servidor.
-
-## 🗄️ Base de Datos
-- **MariaDB Server** → Motor de almacenamiento transaccional para la persistencia de datos.
-- **Integridad Referencial** → Restricciones avanzadas mediante Llaves Foráneas (`FOREIGN KEY`) para resguardar el historial relacional de ventas y detalles.
-- **Consultas Agregadas** → Inyección de queries complejos (`SUM`, `COUNT`, `GROUP BY`) para la automatización de KPIs analíticos en el panel principal.
-
----
-
-# 📂 Arquitectura del Proyecto
-
-```text
-📁 InventarioPro/
-├── 📁 backend/
-│   ├── 📁 public/
-│   │   └── 📁 assets/
-│   │       └── 📁 productos/ # Almacenamiento físico de imágenes de productos
-│   ├── 📁 uploads/           # Cargas auxiliares del servidor
-│   └── 📄 server.js          # Punto de entrada de la API REST y Endpoints
-│
-├── 📁 frontend/
-│   ├── 📁 src/
-│   │   ├── 📁 components/    # Componentes modulares (Carrito, ListaProductos, etc.)
-│   │   ├── 📁 assets/
-│   │   │   └── 📁 evidencias/# Capturas de pantalla utilizadas en la documentación
-│   │   ├── 📄 App.js         # Enrutamiento y lógica principal del cliente React
-│   │   ├── 📄 Login.jsx      # Control de acceso e inicio de sesión
-│   │   └── 📄 index.css      # Estilos generales de la interfaz
-│   │
-│   └── 📁 public/
-│       ├── 📄 index.html     # Plantilla de renderizado HTML5
-│       └── 📄 favicon.ico    # Icono de la pestaña del sistema
-│
-└── 📄 README.md
+## 👨‍💻 Autoría
+Desarrollado por **Emily Jazmin Cruz Rojas**. Este proyecto demuestra competencias clave en la arquitectura de software empresarial, gestión de bases de datos relacionales y desarrollo de interfaces de usuario funcionales.
