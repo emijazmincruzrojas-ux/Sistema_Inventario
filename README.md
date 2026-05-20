@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# ⚡ InventarioPro Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="frontend/src/assets/evidencias/emi2.png" width="100%">
+</p>
 
-## Available Scripts
+<p align="center">
+  <img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react">
+  <img src="https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js">
+  <img src="https://img.shields.io/badge/MariaDB-Database-003545?style=for-the-badge&logo=mariadb">
+  <img src="https://img.shields.io/badge/CSS3-UI-1572B6?style=for-the-badge&logo=css3">
+  <img src="https://img.shields.io/badge/Express.js-API-black?style=for-the-badge&logo=express">
+</p>
 
-In the project directory, you can run:
+---
 
-### `npm start`
+# 📖 Descripción General
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+InventarioPro es una solución de software empresarial Full-Stack diseñada para la gestión centralizada de almacenes, el control operativo de stock en tiempo real y el análisis de transacciones comerciales mediante un ecosistema informático unificado.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+El sistema implementa una arquitectura desacoplada basada en una API RESTful y persistencia de datos relacional sobre MariaDB, lo que garantiza la integridad referencial y auditorías operativas automatizadas del negocio.
 
-### `npm test`
+La plataforma integra:
+- Panel Administrativo de Control (Dashboard General)
+- Gestión de Catálogo de Productos (CRUD Completo)
+- Módulo de Caja Dinámica (Carrito de Compras y Ventas)
+- Bitácora Avanzada de Auditorías con Registro de Eventos
+- Sistema de Control de Acceso y Sesión de Usuarios
+- Sincronización Local Multipantalla (Laptop y Dispositivos Móviles)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+# 🛠️ Especificación Técnica del Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🖥️ Frontend (SPA)
+- **React.js** → Arquitectura basada en componentes reutilizables y manejo de estados dinámicos.
+- **React Scripts** → Entorno de compilación y empaquetado optimizado para el servidor cliente.
+- **CSS3 Personalizado** → Interfaz responsiva con temática oscura (*Dark Mode*) estilizada para entornos de administración y ERP.
+- **Fetch API** → Consumo asíncrono de los endpoints expuestos por la API REST del backend.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚙️ Backend (REST API)
+- **Node.js** → Entorno de ejecución asíncrono de JavaScript en el servidor.
+- **Express.js** → Framework modular para el enrutamiento y gestión de peticiones HTTP.
+- **Cors** → Mecanismo de seguridad perimetral para habilitar el intercambio de recursos de origen cruzado.
+- **Express Static Middleware** → Despliegue y entrega de recursos físicos y assets multimedia desde el servidor.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🗄️ Base de Datos
+- **MariaDB Server** → Motor de almacenamiento transaccional para la persistencia de datos.
+- **Integridad Referencial** → Restricciones avanzadas mediante Llaves Foráneas (`FOREIGN KEY`) para resguardar el historial relacional de ventas y detalles.
+- **Consultas Agregadas** → Inyección de queries complejos (`SUM`, `COUNT`, `GROUP BY`) para la automatización de KPIs analíticos en el panel principal.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 📂 Arquitectura del Proyecto
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```text
+📁 InventarioPro/
+├── 📁 backend/
+│   ├── 📁 public/
+│   │   └── 📁 assets/
+│   │       └── 📁 productos/ # Almacenamiento físico de imágenes de productos
+│   ├── 📁 uploads/           # Cargas auxiliares del servidor
+│   └── 📄 server.js          # Punto de entrada de la API REST y Endpoints
+│
+├── 📁 frontend/
+│   ├── 📁 src/
+│   │   ├── 📁 components/    # Componentes modulares (Carrito, ListaProductos, etc.)
+│   │   ├── 📁 assets/
+│   │   │   └── 📁 evidencias/# Capturas de pantalla utilizadas en la documentación
+│   │   ├── 📄 App.js         # Enrutamiento y lógica principal del cliente React
+│   │   ├── 📄 Login.jsx      # Control de acceso e inicio de sesión
+│   │   └── 📄 index.css      # Estilos generales de la interfaz
+│   │
+│   └── 📁 public/
+│       ├── 📄 index.html     # Plantilla de renderizado HTML5
+│       └── 📄 favicon.ico    # Icono de la pestaña del sistema
+│
+└── 📄 README.md
